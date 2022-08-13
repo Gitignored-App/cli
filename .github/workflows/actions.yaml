@@ -45,7 +45,7 @@ jobs:
               run: make build
 
             - name: Run Package
-              run: make package argv="-l"
+              run: make package argv="-l --allow-dirty"
 
             - name: Run Publish Dry Run
-              run: make publish argv="--dry-run"
+              run: make publish argv="--dry-run --allow-dirty"
