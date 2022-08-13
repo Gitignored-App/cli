@@ -328,9 +328,7 @@ mod tests {
                 .to_str()
                 .unwrap_or_else(|| panic!("Unable to create cache directory")),
         );
-        fs::remove_dir_all(name.clone())
-            .unwrap_or_else(|_| panic!("Unable to remove cache from previous test"));
-        let cache = cache::Cache::new(name);
+        let cache = cache::Cache::new(name.clone());
         let latest_commit_time = DateTime::parse_from_rfc3339("2022-05-10T17:15:30+00:00").unwrap();
         let name_and_content_list = [NameAndContent::new(
             "Python".to_string(),
@@ -396,5 +394,7 @@ mod tests {
         // test custom outdir folder
         cache.generate_gitignore_outdir("temp-test/test1/test2/test3".to_string());
         assert!(Path::new("temp-test/test1/test2").exists());
+        fs::remove_dir_all(name)
+            .unwrap_or_else(|_| panic!("Unable to remove cache from previous test"));
     }
 }
