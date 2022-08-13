@@ -83,3 +83,8 @@ install-rust:
 
 install:
 	cd script && pnpm install --frozen-lockfile
+
+publish:
+	node script/publish pre-publish &&\
+	cargo publish $(argv) &&\
+	node script/publish post-publish
