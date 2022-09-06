@@ -39,7 +39,7 @@ impl Output {
         name_list: NameList,
         number_of_columns: u8,
     ) {
-        for alphabet in 'A'..'Z' {
+        for alphabet in 'A'..='Z' {
             let alphabet = alphabet.to_string();
             println!("\n{}", alphabet.cyan().bold());
             self.print(
